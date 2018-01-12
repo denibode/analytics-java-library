@@ -8,6 +8,8 @@ public class Prop {
 
 	private Boolean enabled;
 
+	private String description;
+
 	private Boolean pathingEnabled;
 
 	private Boolean listEnabled;
@@ -38,6 +40,14 @@ public class Prop {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Boolean getPathingEnabled() {
@@ -75,8 +85,8 @@ public class Prop {
 	@Override
 	public String toString() {
 		return String
-				.format("Prop [id=%s, name=%s, enabled=%s, pathingEnabled=%s, listEnabled=%s, listDelimiter=%s, participationEnabled=%s]",
-						id, name, enabled, pathingEnabled, listEnabled, listDelimiter, participationEnabled);
+				.format("Prop [id=%s, name=%s, enabled=%s, pathingEnabled=%s, listEnabled=%s, listDelimiter=%s, participationEnabled=%s, description=%s]",
+						id, name, enabled, pathingEnabled, listEnabled, listDelimiter, participationEnabled, description);
 	}
 
 }

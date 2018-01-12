@@ -16,7 +16,7 @@ public class Event {
     @XmlElement(required = true, nillable = true)
     protected String name;
     @XmlElement(required = true, nillable = true)
-    protected String type;
+    protected EventTypeEnum type;
     @XmlElement(required = true, nillable = true)
     protected String description;
     @XmlElement(name = "default_metric", required = true, type = Boolean.class, nillable = true)
@@ -24,7 +24,11 @@ public class Event {
     @XmlElement(required = true, nillable = true)
     protected String participation;
     @XmlElement(required = true, nillable = true)
-    protected String serialization;
+    protected SerializationEnum serialization;
+    @XmlElement(required = true, nillable = true)
+    protected VisibilityEnum visibility;
+    @XmlElement(required = true, nillable = true)
+    protected PolarityEnum polarity;
 
     /**
      * Gets the value of the id property.
@@ -82,7 +86,7 @@ public class Event {
      *     {@link String }
      *     
      */
-    public String getType() {
+    public EventTypeEnum getType() {
         return type;
     }
 
@@ -94,7 +98,7 @@ public class Event {
      *     {@link String }
      *     
      */
-    public void setType(String value) {
+    public void setType(EventTypeEnum value) {
         this.type = value;
     }
 
@@ -178,7 +182,7 @@ public class Event {
      *     {@link String }
      *     
      */
-    public String getSerialization() {
+    public SerializationEnum getSerialization() {
         return serialization;
     }
 
@@ -190,8 +194,60 @@ public class Event {
      *     {@link String }
      *     
      */
-    public void setSerialization(String value) {
+    public void setSerialization(SerializationEnum value) {
         this.serialization = value;
+    }
+
+    /**
+     * Gets the value of the polarity property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public PolarityEnum getPolarity() {
+        return polarity;
+    }
+
+    /**
+     * Sets the value of the polarity property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setPolarity(PolarityEnum value) {
+        this.polarity = value;
+    }
+
+    /**
+     * Gets the value of the visibility property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public VisibilityEnum getVisibility() {
+        return visibility;
+    }
+
+    /**
+     * Sets the value of the visibility property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setVisibility(VisibilityEnum value) {
+        if (VisibilityEnum.BUILDERS_BROKEN.equals(value)) {
+            this.visibility = VisibilityEnum.BUILDERS;
+        } else {
+            this.visibility = value;
+        }
     }
 
 }

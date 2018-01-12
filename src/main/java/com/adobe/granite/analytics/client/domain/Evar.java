@@ -8,6 +8,8 @@ public class Evar {
 
 	private String name;
 
+	private String description;
+
 	private AllocationTypeEnum allocationType;
 
 	private String type;
@@ -36,6 +38,14 @@ public class Evar {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public AllocationTypeEnum getAllocationType() {
@@ -97,8 +107,8 @@ public class Evar {
 	@Override
 	public String toString() {
 		return String
-				.format("Evar [id=%s, name=%s, allocationType=%s, type=%s, enabled=%s, expirationType=%s, expirationCustomDays=%s, merchandisingSyntax=%s, bindingEvents=%s]",
-						id, name, allocationType, type, enabled, expirationType, expirationCustomDays,
+				.format("Evar [id=%s, name=%s, description=%s, allocationType=%s, type=%s, enabled=%s, expirationType=%s, expirationCustomDays=%s, merchandisingSyntax=%s, bindingEvents=%s]",
+						id, name, description, allocationType, type, enabled, expirationType, expirationCustomDays,
 						merchandisingSyntax, bindingEvents);
 	}
 }
