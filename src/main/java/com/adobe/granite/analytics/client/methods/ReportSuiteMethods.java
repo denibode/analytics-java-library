@@ -10,18 +10,15 @@ import java.util.List;
 import java.util.Map;
 
 import com.adobe.granite.analytics.client.AnalyticsClient;
-import com.adobe.granite.analytics.client.domain.CompanyReportSuites;
-import com.adobe.granite.analytics.client.domain.ReportDescription;
-import com.adobe.granite.analytics.client.domain.ReportSuiteEvars;
-import com.adobe.granite.analytics.client.domain.ReportSuiteEvents;
-import com.adobe.granite.analytics.client.domain.ReportSuiteProps;
+import com.adobe.granite.analytics.client.domain.*;
 import com.adobe.analytics.client.domain.Bookmark;
 import com.adobe.analytics.client.domain.BookmarkFolder;
 import com.google.gson.reflect.TypeToken;
 
 public class ReportSuiteMethods {
 
-	private final AnalyticsClient client;
+    public static final String RSID_LIST = "rsid_list";
+    private final AnalyticsClient client;
 
 	private Map<String, Bookmark> reportDescriptionBookmarksMap;
 
@@ -36,17 +33,32 @@ public class ReportSuiteMethods {
 
 	public List<ReportSuiteEvars> getEvars(String... rsid) throws IOException {
 		final Type type = new TypeToken<List<ReportSuiteEvars>>() {}.getType();
-		return client.callMethod("ReportSuite.GetEvars", o("rsid_list", rsid), type);
+		return client.callMethod("ReportSuite.GetEvars", o(RSID_LIST, rsid), type);
+	}
+
+	public Boolean saveEvars(List<Evar> evars, String... rsid) throws IOException {
+		final Type type = new TypeToken<Boolean>() {}.getType();
+		return client.callMethod("ReportSuite.SaveEvars", o(RSID_LIST, rsid, "evars", evars), type);
 	}
 
 	public List<ReportSuiteProps> getProps(String... rsid) throws IOException {
 		final Type type = new TypeToken<List<ReportSuiteProps>>() {}.getType();
-		return client.callMethod("ReportSuite.GetProps", o("rsid_list", rsid), type);
+		return client.callMethod("ReportSuite.GetProps", o(RSID_LIST, rsid), type);
 	}
-	
+
+	public Boolean saveProps(List<Prop> props, String... rsid) throws IOException {
+		final Type type = new TypeToken<Boolean>() {}.getType();
+		return client.callMethod("ReportSuite.SaveProps", o(RSID_LIST, rsid, "props", props), type);
+	}
+
 	public List<ReportSuiteEvents> getEvents(String... rsid) throws IOException {
 		final Type type = new TypeToken<List<ReportSuiteEvents>>() {}.getType();
-		return client.callMethod("ReportSuite.GetEvents", o("rsid_list", rsid), type);
+		return client.callMethod("ReportSuite.GetEvents", o(RSID_LIST, rsid), type);
+	}
+
+	public Boolean saveEvents(List<Event> events, String... rsid) throws IOException {
+		final Type type = new TypeToken<Boolean>() {}.getType();
+		return client.callMethod("ReportSuite.SaveEvents", o(RSID_LIST, rsid, "events", events), type);
 	}
 
 	public List<BookmarkFolder> getBookmarksFolders() throws IOException {
