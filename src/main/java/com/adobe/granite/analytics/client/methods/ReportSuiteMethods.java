@@ -41,6 +41,16 @@ public class ReportSuiteMethods {
 		return client.callMethod("ReportSuite.SaveEvars", o(RSID_LIST, rsid, "evars", evars), type);
 	}
 
+	public List<ReportSuiteListVariables> getListVariables(String... rsid) throws IOException {
+		final Type type = new TypeToken<List<ReportSuiteListVariables>>() {}.getType();
+		return client.callMethod("ReportSuite.GetListVariables", o(RSID_LIST, rsid), type);
+	}
+
+	public Boolean saveListVariables(List<ListVariable> listVariables, String... rsid) throws IOException {
+		final Type type = new TypeToken<Boolean>() {}.getType();
+		return client.callMethod("ReportSuite.SaveListVariables", o(RSID_LIST, rsid, "list_variables", listVariables), type);
+	}
+
 	public List<ReportSuiteProps> getProps(String... rsid) throws IOException {
 		final Type type = new TypeToken<List<ReportSuiteProps>>() {}.getType();
 		return client.callMethod("ReportSuite.GetProps", o(RSID_LIST, rsid), type);
